@@ -160,7 +160,7 @@ getParameters <- function(what = "mu",
 ##---------------------------------------------------------------------------------------
 ##---------------------------------------------------------------------------------------
 ## there are here to be consistent with gamlss but they have to change 
-gamlss.rc.list<-c("EX.rc","Exponential.rc") # the right censoring distribution list 
+## gamlss.rc.list<-c("EX.rc","Exponential.rc") # the right censoring distribution list 
 gamlss.bi.list<-c("BI", "Binomial", "BB", "Beta Binomial") # binomial denominators
 #----------------------------------------------------------------------------------------
       nlcall <- sys.call()
@@ -173,7 +173,7 @@ gamlss.bi.list<-c("BI", "Binomial", "BB", "Beta Binomial") # binomial denominato
       if(!missing(data)) 
         if(any(is.na(data)))stop("The data contains NA's, use data = na.omit(mydata)") 
 # get the data (I am not sure if this is the best way)
-    if (is.data.frame(data)) attach(data)
+    if (is.data.frame(data)) { attach(data); on.exit(detach(data))}
 ##-----------------------------------------------------
 ##     get the family
 ##-----------------------------------------------------
@@ -231,11 +231,11 @@ gamlss.bi.list<-c("BI", "Binomial", "BB", "Beta Binomial") # binomial denominato
                     else Y
             } 
 ## For censoring:  not implemented properly 
-    else if(any(family$family%in%gamlss.rc.list))
-    {
-             rc <- Y[,2]
-             y  <- Y[,1]
-     }     
+  #  else if(any(family$family%in%gamlss.rc.list))
+  #  {
+  #           rc <- Y[,2]
+  #           y  <- Y[,1]
+  #   }     
      else {y<-Y ; rc <-NULL }
 ##---------------------------------------------------------------------------------------
 ##checking the permissible y values      
@@ -590,6 +590,6 @@ names(out$se)<- names
  if ("tau"%in%names(family$parameters))  out <- c(out, tau = parameterOut(what="tau") )
 else               out$tau.df <- 0
     class(out) <- list("nlgamlss", "gamlss")
-if (is.data.frame(data)) detach(data)
+#if (is.data.frame(data)) detach(data)
     out
 }
