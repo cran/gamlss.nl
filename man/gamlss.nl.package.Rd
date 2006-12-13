@@ -13,8 +13,8 @@ The main purpose of this package is to allow non-linear fitting within a GAMLSS 
 \tabular{ll}{
 Package: \tab gamlss-nl\cr
 Type: \tab Package\cr
-Version: \tab 1.1.1 \cr
-Date: \tab 2005-10-19\cr
+Version: \tab 1.5.0 \cr
+Date: \tab 2005-12-12\cr
 License: \tab GPL (version 2 or later) \cr
 }
 

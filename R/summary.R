@@ -124,8 +124,8 @@ if ("mu"%in%object$parameters)
         }
     }
    cat("-------------------------------------------------------------------\n")
-   cat("\No. of observations in the fit: ", object$N, "\n")
-   cat("\Degrees of Freedom for the fit: ", object$df.fit)
+   cat("No. of observations in the fit: ", object$N, "\n")
+   cat("Degrees of Freedom for the fit: ", object$df.fit)
    cat("\n")
    cat("      Residual Deg. of Freedom: ", object$df.residual, "\n")
    cat("                      at cycle: ", object$iter, "\n \n")
