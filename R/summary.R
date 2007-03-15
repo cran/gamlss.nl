@@ -6,7 +6,7 @@ summary.nlgamlss<- function (object, dispersion = NULL,  ...)
       digits <- max(3, getOption("digits") - 3)
       cat("*******************************************************************")
     cat("\nFamily: ", deparse(object$family), "\n") 
-    cat("Call: ", deparse(object$call), "\n")
+    cat("\nCall: ", deparse(object$call),  "\n", fill=TRUE)
     cat("Fitting method:", deparse(object$method), "\n\n") 
     est.disp <- FALSE
         df.r <- object$noObs - object$mu.df

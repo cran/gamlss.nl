@@ -178,7 +178,6 @@ gamlss.bi.list<-c("BI", "Binomial", "BB", "Beta Binomial") # binomial denominato
 ##     get the family
 ##-----------------------------------------------------
       family <- as.gamlss.family(family)         
-      if (!family$y.valid(y))  stop( "response variable out of range")
        fname <- family$family[1]
         dfun <- paste("d",fname,sep="")
         pfun <- paste("p",fname,sep="")
@@ -230,13 +229,18 @@ gamlss.bi.list<-c("BI", "Binomial", "BB", "Beta Binomial") # binomial denominato
                y <- if(is.factor(Y))   unclass(Y)
                     else Y
             } 
-## For censoring:  not implemented properly 
-  #  else if(any(family$family%in%gamlss.rc.list))
-  #  {
-  #           rc <- Y[,2]
-  #           y  <- Y[,1]
-  #   }     
-     else {y<-Y ; rc <-NULL }
+     else if(is.Surv(Y))
+          { 
+           ## checking that the family is censored
+           if (length(grep("censored",family$family[[2]]))==0) 
+            stop(paste("the family in not a censored distribution, use cens()"))
+           ## checking compatability of Surv object and censored distribution
+           if (length(grep(attr(Y,"type"),family$family[[2]]))==0) 
+            stop(paste("the Surv object and the censored distribution are not of the same type"))
+           y <- Y    
+           }     
+     else {y <- Y }
+     if (!family$y.valid(y))  stop( "response variable out of range")
 ##---------------------------------------------------------------------------------------
 ##checking the permissible y values      
    if (!family$y.valid(y)) # MS Thursday, June 20, 2002 at 16:30 
@@ -490,23 +494,18 @@ print.level <- control$print.level
         cov <- diag(np0)
         if (hessian) {
             if (np0 == 1) 
-                cov <- 1/p.opt$hessian
+                cov <- 1/(2*p.opt$hessian)
             else {
-                a <- if (any(is.na(p.opt$hessian)) || any(abs(p.opt$hessian) == 
-                  Inf)) 
-                  0
-                else qr(p.opt$hessian)$rank
-                if (a == np0) 
-                  cov <- solve(p.opt$hessian)
+                a <- if (any(is.na(p.opt$hessian)) || any(abs(p.opt$hessian) == Inf)) 0
+                     else qr(p.opt$hessian)$rank
+                if (a == np0) cov <- solve(p.opt$hessian/2)
                 else cov <- matrix(NA, ncol = np0, nrow = np0)
             }
         }
-        se <- if (hessian) 
-            sqrt(diag(cov))
-        else NA
-        corr <- if (hessian) 
-            cov2cor(cov) # cov/(se %o% se) 
-        else NA
+        se <- if (hessian) sqrt(diag(cov))
+              else NA
+        corr <- if (hessian) cov2cor(cov) # cov/(se %o% se) 
+                else NA
         
    }
   else coefficients <- se <- cov <- corr  <-  NULL

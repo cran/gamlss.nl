@@ -13,6 +13,7 @@ export(nlgamlss, NL.control, finterp.default, finterp, fmobj, nl.obj, nl, gamlss
 
 
 #importFrom(graphics, pairs, plot)
+importFrom(survival, Surv, is.Surv)
 
 #useDynLib(gamlss)
 
