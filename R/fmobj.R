@@ -61,13 +61,13 @@ fnenvir.default <- function (.z, .envir = parent.frame(), .name = NULL, .expand 
     if (!is.environment(.envir)) {
         if (is.null(.name)) 
             .name <- paste(deparse(substitute(.envir)))
-        if (inherits(.envir, "repeated")) 
-            return(fnenvir.repeated(.z, .envir, .name = .name, 
-                .expand, .response))
-        if (inherits(.envir, "tccov")) 
-            return(fnenvir.tccov(.z, .envir, .name = .name, .expand))
-        if (inherits(.envir, "tvcov")) 
-            return(fnenvir.tvcov(.z, .envir, .name = .name, .expand))
+      #  if (inherits(.envir, "repeated")) 
+      #      return(fnenvir.repeated(.z, .envir, .name = .name, 
+      #          .expand, .response))
+      #  if (inherits(.envir, "tccov")) 
+      #      return(fnenvir.tccov(.z, .envir, .name = .name, .expand))
+      #  if (inherits(.envir, "tvcov")) 
+      #      return(fnenvir.tvcov(.z, .envir, .name = .name, .expand))
         if (inherits(.envir, "data.frame")) 
             return(fnenvir.data.frame(.z, .envir, .name = .name, 
                 .expand))

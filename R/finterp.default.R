@@ -16,16 +16,16 @@ finterp.default <- function (.z, .envir = parent.frame(), .formula = FALSE,
     if (!is.environment(.envir)) {
         if (is.null(.name)) 
             .name <- paste(deparse(substitute(.envir)))
-        if (inherits(.envir, "repeated")) 
-            return(finterp.repeated(.z, .envir, .formula, .vector, 
-                .args, .start, .name, .expand, .intercept, .old, 
-                .response))
-        if (inherits(.envir, "tccov")) 
-            return(finterp.tccov(.z, .envir, .formula, .vector, 
-                .args, .start, .name, .expand, .intercept, .old))
-        if (inherits(.envir, "tvcov")) 
-            return(finterp.tvcov(.z, .envir, .formula, .vector, 
-                .args, .start, .name, .expand, .intercept, .old))
+    #    if (inherits(.envir, "repeated")) 
+    #        return(finterp.repeated(.z, .envir, .formula, .vector, 
+    #            .args, .start, .name, .expand, .intercept, .old, 
+    #            .response))
+    #    if (inherits(.envir, "tccov")) 
+    #        return(finterp.tccov(.z, .envir, .formula, .vector, 
+    #            .args, .start, .name, .expand, .intercept, .old))
+    #    if (inherits(.envir, "tvcov")) 
+    #        return(finterp.tvcov(.z, .envir, .formula, .vector, 
+    #            .args, .start, .name, .expand, .intercept, .old))
         if (inherits(.envir, "data.frame")) 
             return(finterp.data.frame(.z, .envir, .formula, .vector, 
                 .args, .start, .name, .expand, .intercept, .old))

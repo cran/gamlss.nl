@@ -43,7 +43,7 @@ getParameters <- function(what = "mu",
                        formula = mu.formula, 
                            fix = mu.fix, 
                          start = mu.start,
-                            np = nlmu,
+                            np = npmu,
                      start.at  = "1",
                      start.v   = 1)
  {
