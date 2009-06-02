@@ -16,15 +16,14 @@
           up to 510 seconds}
   }
 }
-\details{ The blood flow data were analyzed by Lange {\it
-et al.} (1989), Jones and Faddy (2003) and Rigby and Stasinopoulos (2006). 
+\details{ The blood flow data were analyzed by Lange \emph{et al.} (1989), Jones and Faddy (2003) and Rigby and Stasinopoulos (2006). 
 As response variables y the variables PET60, PETother, PET510
 can be used representing  blood flow
 measured non-invasively by positron emission tomography using a scan
 up to 60 seconds (PET60) or 510 second (PET510) respectively.  The explanatory variable x is the blood
 flow measured invasively using radioactively labelled micro-spheres.
-The distribution of y has previously been modelled by a normal (NO) and a  {\it t} family
-distribution (TF), Lange {\it et al.} (1989), and by a skew {\it t}
+The distribution of y has previously been modelled by a normal (NO) and a  \emph{t} family
+distribution (TF), Lange \emph{et al.} (1989), and by a skew \emph{t}
 distribution (ST), Jones and Faddy (2003) and by Rigby and Stasinopoulos (2006) using several three and four parameter distributions, 
 including the Box-Cox power exponential (BCPE), Rigby and Stasinopoulos (2004) and the Box-Cox t diastribution (BCT) . 
 

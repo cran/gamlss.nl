@@ -26,7 +26,8 @@ nlgamlss <- function (
 .gamlss.multin.list<-c("MULTIN", "MN3", "MN4", "MN5")
 #----------------------------------------------------------------------------------------
 rqres <- function (pfun = "pNO", 
-                   type = c("Continuous", "Discrete", "Mixed"), 
+                   type = c("Continuous", "Discrete", "Mixed"),
+               censored = NULL,  
                    ymin = NULL, 
                  mass.p = NULL, 
                 prob.mp = NULL,
@@ -308,14 +309,24 @@ if ("sigma"%in%names(family$parameters))
                 fmu <- fnmu(p)      
             if (exact) 
             {
+                    if(any(family$family%in%gamlss.bi.list))
+                     {
+                tamp1 <- call(pfun, q = y + delta/2, bd=bd, mu = fmu )
+                tamp2 <- call(pfun, q = y - delta/2, bd=bd, mu = fmu )
+                     }   
+                     else    
+                     {
                 tamp1 <- call(pfun, q = y + delta/2, mu = fmu )
                 tamp2 <- call(pfun, q = y - delta/2, mu = fmu )
+                     }
+               
                  tamp <- eval(tamp1)-eval(tamp2)
              llikcomp <- -(2*log(tamp)) * weights
             }
             else 
             {
-                ctamp <- call(dfun, y = y, mu = fmu )  
+             ctamp <-if(any(family$family%in%gamlss.bi.list))   call(dfun, y = y, bd=bd, mu = fmu )  
+                     else    call(dfun, y = y, mu = fmu )   
                 tamp <-eval(ctamp)
                # llikcomp <- -(log(tamp) + log(delta)) * weights
                 llikcomp <- -2*log(tamp)* weights
@@ -326,15 +337,24 @@ if ("sigma"%in%names(family$parameters))
               fmu <- fnmu(p)
             fsigma <- fnsigma(p)      
              if (exact) 
-            {
-                 tamp1 <- call(pfun, q = y + delta/2, mu = fmu , sigma = fsigma)
+            {         
+             if(any(family$family%in%gamlss.bi.list))
+                     {
+                tamp1 <- call(pfun, q = y + delta/2, bd=bd, mu = fmu, sigma = fsigma )
+                tamp2 <- call(pfun, q = y - delta/2, bd=bd, mu = fmu, sigma = fsigma )
+                     }   
+                     else    
+                     {
+                 tamp1 <- call(pfun, q = y + delta/2, mu = fmu )
                  tamp2 <- call(pfun, q = y - delta/2, mu = fmu , sigma = fsigma)
+                     }      
                  tamp <- eval(tamp1)-eval(tamp2)
              llikcomp <- -(2*log(tamp)) * weights
             }
             else 
             {
-                ctamp <- call(dfun, y = y, mu = fmu , sigma = fsigma)  
+             ctamp <-if(any(family$family%in%gamlss.bi.list))    call(dfun, y = y, bd=bd, mu = fmu , sigma = fsigma)  
+                     else   call(dfun, y = y, mu = fmu , sigma = fsigma)  
                  tamp <-eval(ctamp)
                # llikcomp <- -(log(tamp) + log(delta)) * weights
                 llikcomp <- -2*log(tamp)* weights
