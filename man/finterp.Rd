@@ -86,7 +86,7 @@ fmobj(z, envir = parent.frame())
   \item{envir}{The environment in which the formula is to be interpreted.}
    \item{\dots}{for extra arguments}    
 }
-\details{}
+
 \value{
   A function, of class \code{formulafn}, of the unknown parameters or of
      a vector of them is returned. Its attributes give the formula
@@ -106,8 +106,8 @@ fmobj(z, envir = parent.frame())
 }
 \references{ \url{http://popgen.unimaas.nl/~jlindsey/index.html: Jim Lindsey web page} }
 \author{  J.K. Lindsey }
-\note{}
-\seealso{  \code{\link{help}}, ~~~ }
+
+
 \examples{
 # From Jim Lindsey
 x1 <- rpois(20,2)

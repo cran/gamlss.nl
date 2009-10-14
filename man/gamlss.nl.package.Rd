@@ -15,9 +15,7 @@ Package: \tab gamlss-nl\cr
 Type: \tab Package\cr
 Version: \tab 1.5.0 \cr
 Date: \tab 2005-12-12\cr
-License: \tab GPL (version 2 or later) \cr
-}
-
+License: \tab GPL (version 2 or later) \cr}
 }
 \author{
 
@@ -31,7 +29,6 @@ Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for lo
 Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2003) Instructions on how to use the GAMLSS package in R.
 Accompanying documentation in the current GAMLSS  help files, (see also  \url{http://www.gamlss.com/}).
 }
-\keyword{ package }
 
 \seealso{\code{\link[gamlss]{gamlss}}} 
 
@@ -45,3 +42,4 @@ plot(modJSU)
 summary(modJSU)
 vcov(modJSU)
 }
+\keyword{ package }

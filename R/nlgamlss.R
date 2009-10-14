@@ -325,8 +325,8 @@ if ("sigma"%in%names(family$parameters))
             }
             else 
             {
-             ctamp <-if(any(family$family%in%gamlss.bi.list))   call(dfun, y = y, bd=bd, mu = fmu )  
-                     else    call(dfun, y = y, mu = fmu )   
+             ctamp <-if(any(family$family%in%gamlss.bi.list))   call(dfun, x = y, bd=bd, mu = fmu )  
+                     else    call(dfun, x = y, mu = fmu )   
                 tamp <-eval(ctamp)
                # llikcomp <- -(log(tamp) + log(delta)) * weights
                 llikcomp <- -2*log(tamp)* weights
@@ -353,8 +353,8 @@ if ("sigma"%in%names(family$parameters))
             }
             else 
             {
-             ctamp <-if(any(family$family%in%gamlss.bi.list))    call(dfun, y = y, bd=bd, mu = fmu , sigma = fsigma)  
-                     else   call(dfun, y = y, mu = fmu , sigma = fsigma)  
+             ctamp <-if(any(family$family%in%gamlss.bi.list))    call(dfun, x = y, bd=bd, mu = fmu , sigma = fsigma)  
+                     else   call(dfun, x = y, mu = fmu , sigma = fsigma)  
                  tamp <-eval(ctamp)
                # llikcomp <- -(log(tamp) + log(delta)) * weights
                 llikcomp <- -2*log(tamp)* weights
@@ -374,7 +374,7 @@ if ("sigma"%in%names(family$parameters))
             }
             else 
             {
-                  ctamp <- call(dfun, y = y, mu = fmu , sigma = fsigma, nu = fnu)  
+                  ctamp <- call(dfun, x = y, mu = fmu , sigma = fsigma, nu = fnu)  
                 tamp <-eval(ctamp)
                # llikcomp <- -(log(tamp) + log(delta)) * weights
                 llikcomp <- -2*log(tamp)* weights
@@ -395,7 +395,7 @@ if ("sigma"%in%names(family$parameters))
             }
             else 
             {
-                ctamp <- call(dfun, y = y, mu = fmu , sigma = fsigma, nu = fnu, tau = ftau)  
+                ctamp <- call(dfun, x = y, mu = fmu , sigma = fsigma, nu = fnu, tau = ftau)  
                 tamp <-eval(ctamp)
                # llikcomp <- -(log(tamp) + log(delta)) * weights
                 llikcomp <- -2*log(tamp)* weights

@@ -74,7 +74,4 @@ Accompanying documentation in the current GAMLSS  help files, (see also  \url{ht
 \note{ This functions supports the function \code{nlgamlss} 
 }
 \seealso{\code{\link{nlgamlss}}, \code{\link{nlm}}}
-\examples{
-
-}
 \keyword{regression}

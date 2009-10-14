@@ -50,7 +50,6 @@ Accompanying documentation in the current GAMLSS  help files, (see also  \url{ht
 
 \author{Mikis Stasinopoulos \email{d.stasinopoulos@londonmet.ac.uk}, Bob Rigby \email{b.rigby@londonmet.ac.uk }}
 
-\note{ }
 \seealso{ \code{\link{nlgamlss}}}
 \examples{
 data(la)

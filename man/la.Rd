@@ -28,8 +28,7 @@ distribution (ST), Jones and Faddy (2003) and by Rigby and Stasinopoulos (2006) 
 including the Box-Cox power exponential (BCPE), Rigby and Stasinopoulos (2004) and the Box-Cox t diastribution (BCT) . 
 
 }
-\source{
-}
+
 \references{
 Jones, M. C. and Faddy, M. J. (2003). A skew extension of the t
 distribution, with applications. \emph{J. Roy. Statist.} Soc B, \bold{65}, 159-174.

@@ -49,7 +49,7 @@ nlgamlss(y = NULL, mu.formula = ~1, sigma.formula = ~1,
  \item{sigma.start}{vector or scalar of initial values for the scale parameter sigma e.g. \code{sigma.start=1}  }
  \item{nu.start}{vector or scalar of initial values for the parameter nu e.g. \code{nu.start=3}}
  \item{tau.start}{vector or scalar of initial values for the location parameter tau e.g. \code{tau.start=2} }   
- \item{family}{the distribution family of the gamlss object (see \code{\link[gamlss]{gamlss.family}})}
+ \item{family}{the distribution family of the gamlss object (see \code{\link[gamlss.dist]{gamlss.family}})}
  \item{weights}{a vector of weights. Here weights can be used to weight out observations (like in \code{subset})
                  or for a weighted likelihood analysis where the contribution of the observations to the
                  likelihood differs according to \code{weights}.
@@ -70,12 +70,11 @@ nlgamlss(y = NULL, mu.formula = ~1, sigma.formula = ~1,
                 
 }
 
-\details{}
 
 \value{
   
   Returns a nlgamlss object with components
-  \item{family}{the distribution family of the nlgamlss object (see \code{\link[gamlss]{gamlss.family}})}
+  \item{family}{the distribution family of the nlgamlss object (see \code{\link[gamlss.dist]{gamlss.family}})}
   \item{parameters }{the name of the fitted parameters i.e. \bold{\code{mu}}, \bold{\code{sigma}}, \bold{\code{nu}}, \bold{\code{tau}} }
   \item{call}{the call of the nlgamlss function}
   \item{y}{the response variable}
@@ -126,7 +125,7 @@ Accompanying documentation in the current GAMLSS  help files, (see also  \url{ht
 
 \note{ The following generic functions can be used with a GAMLSS object: \code{print},  \code{fitted},  \code{coef},  
           \code{residuals}, \code{update},  \code{plot}, \code{deviance}, \code{formula}  }
-\seealso{\code{\link[gamlss]{gamlss}}, \code{\link[gamlss]{gamlss.family}} }
+\seealso{\code{\link[gamlss]{gamlss}}, \code{\link[gamlss.dist]{gamlss.family}} }
 \examples{
 data(la)
 # fitting a BCPE distribtion to the data
