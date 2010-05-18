@@ -162,7 +162,7 @@ getParameters <- function(what = "mu",
 ##---------------------------------------------------------------------------------------
 ## there are here to be consistent with gamlss but they have to change 
 ## gamlss.rc.list<-c("EX.rc","Exponential.rc") # the right censoring distribution list 
-gamlss.bi.list<-c("BI", "Binomial", "BB", "Beta Binomial") # binomial denominators
+#gamlss.bi.list<-c("BI", "Binomial", "BB", "Beta Binomial") # binomial denominators
 #----------------------------------------------------------------------------------------
       nlcall <- sys.call()
 ##-----------------------------------------------------
@@ -204,7 +204,7 @@ gamlss.bi.list<-c("BI", "Binomial", "BB", "Beta Binomial") # binomial denominato
          if(is.null(dim(Y)))                       # if y not matrix
          N <- length(Y) else N <- dim(Y)[1]   # calculate the dimension for y  
 ## extracting now the y and the binomial denominator in case we use BI or BB
-    if(any(family$family%in%gamlss.bi.list)) 
+    if(any(family$family%in%gamlss:::.gamlss.bi.list)) 
     { 
        if (NCOL(Y) == 1) 
             {
@@ -309,7 +309,7 @@ if ("sigma"%in%names(family$parameters))
                 fmu <- fnmu(p)      
             if (exact) 
             {
-                    if(any(family$family%in%gamlss.bi.list))
+                    if(any(family$family%in%gamlss:::.gamlss.bi.list))
                      {
                 tamp1 <- call(pfun, q = y + delta/2, bd=bd, mu = fmu )
                 tamp2 <- call(pfun, q = y - delta/2, bd=bd, mu = fmu )
@@ -325,7 +325,7 @@ if ("sigma"%in%names(family$parameters))
             }
             else 
             {
-             ctamp <-if(any(family$family%in%gamlss.bi.list))   call(dfun, x = y, bd=bd, mu = fmu )  
+             ctamp <-if(any(family$family%in%gamlss:::.gamlss.bi.list))   call(dfun, x = y, bd=bd, mu = fmu )  
                      else    call(dfun, x = y, mu = fmu )   
                 tamp <-eval(ctamp)
                # llikcomp <- -(log(tamp) + log(delta)) * weights
@@ -338,7 +338,7 @@ if ("sigma"%in%names(family$parameters))
             fsigma <- fnsigma(p)      
              if (exact) 
             {         
-             if(any(family$family%in%gamlss.bi.list))
+             if(any(family$family%in%gamlss:::.gamlss.bi.list))
                      {
                 tamp1 <- call(pfun, q = y + delta/2, bd=bd, mu = fmu, sigma = fsigma )
                 tamp2 <- call(pfun, q = y - delta/2, bd=bd, mu = fmu, sigma = fsigma )
@@ -353,7 +353,7 @@ if ("sigma"%in%names(family$parameters))
             }
             else 
             {
-             ctamp <-if(any(family$family%in%gamlss.bi.list))    call(dfun, x = y, bd=bd, mu = fmu , sigma = fsigma)  
+             ctamp <-if(any(family$family%in%gamlss:::.gamlss.bi.list))    call(dfun, x = y, bd=bd, mu = fmu , sigma = fsigma)  
                      else   call(dfun, x = y, mu = fmu , sigma = fsigma)  
                  tamp <-eval(ctamp)
                # llikcomp <- -(log(tamp) + log(delta)) * weights
@@ -362,19 +362,29 @@ if ("sigma"%in%names(family$parameters))
          }     
        if(lpar==3)
          {
-           fmu <- fnmu(p)
+          fmu <- fnmu(p)
         fsigma <- fnsigma(p)
            fnu <- fnnu(p)   
              if (exact) 
             {
-             tamp1 <- call(pfun, q = y + delta/2, mu = fmu , sigma = fsigma, nu = fnu)
-             tamp2 <- call(pfun, q = y - delta/2, mu = fmu , sigma = fsigma, nu = fnu)
+            if(any(family$family%in%gamlss:::.gamlss.bi.list))
+                     {
+                tamp1 <- call(pfun, q = y + delta/2, bd=bd, mu = fmu, sigma = fsigma, nu= fnu )
+                tamp2 <- call(pfun, q = y - delta/2, bd=bd, mu = fmu, sigma = fsigma, nu= fnu )
+                     }   
+                     else    
+                     {
+               tamp1 <- call(pfun, q = y + delta/2, mu = fmu , sigma = fsigma, nu = fnu)
+               tamp2 <- call(pfun, q = y - delta/2, mu = fmu , sigma = fsigma, nu = fnu)
+                     }      
               tamp <- eval(tamp1)-eval(tamp2)
           llikcomp <- -(2*log(tamp)) * weights
             }
             else 
             {
-                  ctamp <- call(dfun, x = y, mu = fmu , sigma = fsigma, nu = fnu)  
+             ctamp <-if(any(family$family%in%gamlss:::.gamlss.bi.list))    
+                              {call(dfun, x = y, bd=bd, mu = fmu , sigma = fsigma, nu = fnu)}  
+                        else  {call(dfun, x = y,        mu = fmu , sigma = fsigma, nu = fnu)}  
                 tamp <-eval(ctamp)
                # llikcomp <- -(log(tamp) + log(delta)) * weights
                 llikcomp <- -2*log(tamp)* weights
@@ -382,20 +392,30 @@ if ("sigma"%in%names(family$parameters))
            }
        if(lpar==4)
          {
-           fmu <- fnmu(p)
+            fmu <- fnmu(p)
         fsigma <- fnsigma(p)
            fnu <- fnnu(p)
           ftau <- fntau(p)
              if (exact) 
             {
-        tamp1 <- call(pfun, q = y + delta/2, mu = fmu , sigma = fsigma, nu = fnu, tau = ftau)
-        tamp2 <- call(pfun, q = y - delta/2, mu = fmu , sigma = fsigma, nu = fnu, tau = ftau)
+             if(any(family$family%in%gamlss:::.gamlss.bi.list))
+                     {
+                tamp1 <- call(pfun, q = y + delta/2, bd=bd, mu = fmu, sigma = fsigma, nu= fnu, tau = ftau )
+                tamp2 <- call(pfun, q = y - delta/2, bd=bd, mu = fmu, sigma = fsigma, nu= fnu, tau = ftau )
+                     }   
+                     else    
+                     {
+               tamp1 <- call(pfun, q = y + delta/2, mu = fmu , sigma = fsigma, nu = fnu, tau = ftau)
+               tamp2 <- call(pfun, q = y - delta/2, mu = fmu , sigma = fsigma, nu = fnu, tau = ftau)
+                     }   
          tamp <- eval(tamp1)-eval(tamp2)
      llikcomp <- -(2*log(tamp)) * weights
             }
             else 
             {
-                ctamp <- call(dfun, x = y, mu = fmu , sigma = fsigma, nu = fnu, tau = ftau)  
+             ctamp <-if(any(family$family%in%gamlss:::.gamlss.bi.list))    
+                              {call(dfun, x = y, bd=bd, mu = fmu , sigma = fsigma, nu = fnu, tau = ftau)}  
+                        else  {call(dfun, x = y,        mu = fmu , sigma = fsigma, nu = fnu, tau = ftau)}  
                 tamp <-eval(ctamp)
                # llikcomp <- -(log(tamp) + log(delta)) * weights
                 llikcomp <- -2*log(tamp)* weights
