@@ -72,7 +72,7 @@ fnenvir.default <- function (.z, .envir = parent.frame(), .name = NULL, .expand 
             return(fnenvir.data.frame(.z, .envir, .name = .name, 
                 .expand))
     }
-    .ch1 <- deparse(.z, width = 500)
+    .ch1 <- deparse(.z, width.cutoff = 500)
     .ch2 <- .ch1[1]
     .ch1 <- .ch1[-1]
     .mem2 <- strsplit(gsub("[(),]", " ", .ch2), " ")[[1]]
@@ -165,7 +165,7 @@ fnenvir.data.frame <- function (.z, .envir = NULL, .name = NULL, .expand = TRUE)
     .ndata <- if (is.null(.name)) 
         paste(deparse(substitute(.envir)))
     else .name
-    .ch1 <- deparse(.z, width = 500)
+    .ch1 <- deparse(.z, width.cutoff = 500)
     .ch2 <- .ch1[1]
     .ch1 <- .ch1[-1]
     .mem2 <- strsplit(gsub("[(),]", " ", .ch2), " ")[[1]]

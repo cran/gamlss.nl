@@ -46,7 +46,7 @@ Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for lo
 \emph{Appl. Statist.}, \bold{54}, part 3, pp 507-554.
                    
 Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2003) Instructions on how to use the GAMLSS package in R.
-Accompanying documentation in the current GAMLSS  help files, (see also  \url{http://www.gamlss.org/}).}
+Accompanying documentation in the current GAMLSS  help files, (see also  \url{http://www.gamlss.com/}).}
 
 \author{Mikis Stasinopoulos \email{d.stasinopoulos@londonmet.ac.uk}, Bob Rigby \email{b.rigby@londonmet.ac.uk }}
 
@@ -57,3 +57,4 @@ nlo<-nl.obj(formula=~bflow*(1-(1-exp(p1))*exp(-p2/bflow)), start=c(-.9, 90), dat
 mod1<-gamlss(PET60~nl(nlo)-1, data=la ) 
 }
 \keyword{regression}%
+
