@@ -1,0 +1,16 @@
+ce58c08711be6c8e4cf50d7b0d8394af *DESCRIPTION
+d6fb780215bbfb7480cff4f97a7ba4ca *NAMESPACE
+a870726e7dbad5cd330ddb903356945f *R/NL.control.R
+da493d4d3a25ca8dff75680dca531f46 *R/finterp.default.R
+3bc2d4633b2b73629e9b7986c2897df0 *R/fmobj.R
+2bbdfd203a7dfe87b50905d156666498 *R/nlAdditive.R
+5a6c1e491b9df1db89165d999733783c *R/nlgamlss.R
+246bba2c99c7d458c9f8d256091ffc40 *R/summary.R
+8b45b87a9143a5e79000f31e6a2a775c *data/la.rda
+810c0aa1eee14580d966a1b19ce8ab5d *man/NL.control.Rd
+147fb32a8216f55d690df4a1bedbc318 *man/finterp.Rd
+ab13b51c125d6e0a383c5524bcabfaea *man/gamlss.nl.package.Rd
+5e539b616ea46f970d7d643cf224ddf9 *man/la.Rd
+0933616f0a92a28405878dd1a16b5ed1 *man/nl.Rd
+241a6678a2b7d00fb064bca66f73b896 *man/nlgamlss.Rd
+a18eb8634840e5b924d5b62dcc237296 *tests/tests-nlgamlss.R

@@ -1,8 +1,8 @@
 Package: gamlss.nl
 Type: Package
 Title: Fitting non linear parametric GAMLSS models
-Version: 4.0-5
-Date: 2011-05-02
+Version: 4.1-0
+Date: 2012-02-15
 Author: Mikis Stasinopoulos <d.stasinopoulos@londonmet.ac.uk>, Bob
         Rigby <r.rigby@londonmet.ac.uk> with contributions from
         Philippe Lambert.
@@ -15,6 +15,6 @@ Description: This is an add on package to GAMLSS. It allows one extra
         distribution.
 License: GPL-2 | GPL-3
 URL: http://www.gamlss.org/
-Packaged: 2011-05-02 16:47:35 UTC; stasinom
+Packaged: 2012-02-15 12:16:14 UTC; stasinom
 Repository: CRAN
-Date/Publication: 2011-05-03 10:41:58
+Date/Publication: 2012-02-15 12:56:58

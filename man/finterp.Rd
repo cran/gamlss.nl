@@ -1,5 +1,6 @@
 \name{finterp}
 \alias{finterp}
+\alias{finterp.data.frame}
 \alias{finterp.default}
 \alias{fmobj}
 
@@ -36,10 +37,13 @@ Note that not all the functionalities of \code{finterp} are implemented in \code
      parameters, covariates, factor variables, and functions.
 }
 \usage{
-finterp.default(.z, .envir = parent.frame(), .formula = FALSE, 
+\method{finterp}{default}(.z, .envir = parent.frame(), .formula = FALSE, 
        .vector = TRUE, .args = NULL, .start = 1, 
        .name = NULL, .expand = TRUE, .intercept = TRUE, 
        .old = NULL, .response = FALSE, ...)
+\method{finterp}{data.frame}(.z, .envir = NULL, .formula = FALSE, .vector = TRUE, 
+    .args = NULL, .start = 1, .name = NULL, .expand = NULL, .intercept = TRUE, 
+    .old = NULL, ...)
 finterp(.z, ...)
 fmobj(z, envir = parent.frame())
 }
